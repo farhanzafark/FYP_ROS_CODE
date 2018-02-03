@@ -1,0 +1,2 @@
+string senderType
+int msgData

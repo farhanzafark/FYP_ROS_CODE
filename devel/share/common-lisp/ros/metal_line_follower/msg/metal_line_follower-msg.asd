@@ -1,0 +1,21 @@
+
+(cl:in-package :asdf)
+
+(defsystem "metal_line_follower-msg"
+  :depends-on (:roslisp-msg-protocol :roslisp-utils )
+  :components ((:file "_package")
+    (:file "motorMsg" :depends-on ("_package_motorMsg"))
+    (:file "_package_motorMsg" :depends-on ("_package"))
+    (:file "myCustom" :depends-on ("_package_myCustom"))
+    (:file "_package_myCustom" :depends-on ("_package"))
+    (:file "parameterMsg" :depends-on ("_package_parameterMsg"))
+    (:file "_package_parameterMsg" :depends-on ("_package"))
+    (:file "proximityMsg" :depends-on ("_package_proximityMsg"))
+    (:file "_package_proximityMsg" :depends-on ("_package"))
+    (:file "rfidMsg" :depends-on ("_package_rfidMsg"))
+    (:file "_package_rfidMsg" :depends-on ("_package"))
+    (:file "sensorValMsg" :depends-on ("_package_sensorValMsg"))
+    (:file "_package_sensorValMsg" :depends-on ("_package"))
+    (:file "ultrasonicMsg" :depends-on ("_package_ultrasonicMsg"))
+    (:file "_package_ultrasonicMsg" :depends-on ("_package"))
+  ))
