@@ -2,9 +2,10 @@
 
 ## FYP Project Files:  
 
+| File | Description |
 | --- | --- |
 | **src/metal_line_follower:** | project code folder |
-|**msg:**|   all different messages being used for carrying sensor input  |
+| **msg:** |   all different messages being used for carrying sensor input  |
 |**scripts/central_processor.py:**|    gets all messages from sensors, and carries out decision making for robot movement  |
     
     
