@@ -1,6 +1,6 @@
 # FYP_ROS_CODE  
 
-##FYP Project Files:  
+## FYP Project Files:  
 
 
    + **src/metal_line_follower:**    project code folder  
@@ -27,7 +27,7 @@
    + **scripts/sim_rfid_sense.py:**    generates rfid readings to simulate and test response without hardware  
     
     
-   +     proximity sensor readings are simulated through proximity_sense.py.  
+   + proximity sensor readings are simulated through proximity_sense.py.  
     
     
                                     
