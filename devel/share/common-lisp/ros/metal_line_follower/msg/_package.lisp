@@ -1,6 +1,8 @@
 (cl:defpackage metal_line_follower-msg
   (:use )
   (:export
+   "<GRAPHMSG>"
+   "GRAPHMSG"
    "<MOTORMSG>"
    "MOTORMSG"
    "<MYCUSTOM>"

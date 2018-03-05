@@ -54,7 +54,7 @@ def talker():
        	sensorValMsg.leftSensorIn = GPIO.input(ProximityPinLeft)
 	sensorValMsg.rightSensorIn  = GPIO.input(ProximityPinRight)
 	sensorValMsg.centerSensorIn = GPIO.input(ProximityPinCenter)
-	if sendFlag == 0:
+	'''if sendFlag == 0:
 		for i in range(0,800):
 			print(i)
 			if i>0 and i<250:
@@ -81,12 +81,12 @@ def talker():
 			rospy.loginfo(sensorMsg)
 			pub.publish(sensorMsg)
 			rate.sleep() 
-			sendFlag=1
+			sendFlag=1'''
 	## publish sensor data
 		
-	#rospy.loginfo(sensorMsg)
-	#pub.publish(sensorMsg)
-	#rate.sleep()
+	rospy.loginfo(sensorMsg)
+	pub.publish(sensorMsg)
+	rate.sleep()
 """
 	if GPIO.input(ProximityPin) == GPIO.HIGH:
 			print(GPIO.input(ProximityPin))

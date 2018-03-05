@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "metal_line_follower: 5 messages, 0 services")
+message(STATUS "metal_line_follower: 6 messages, 0 services")
 
 set(MSG_I_FLAGS "-Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg")
 
@@ -17,9 +17,9 @@ add_custom_target(metal_line_follower_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" NAME_WE)
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" NAME_WE)
 add_custom_target(_metal_line_follower_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "metal_line_follower" "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "metal_line_follower" "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" ""
 )
 
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/proximityMsg.msg" NAME_WE)
@@ -32,9 +32,14 @@ add_custom_target(_metal_line_follower_generate_messages_check_deps_${_filename}
   COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "metal_line_follower" "/home/farhan/catkin_ws/src/metal_line_follower/msg/sensorValMsg.msg" ""
 )
 
-get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" NAME_WE)
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg" NAME_WE)
 add_custom_target(_metal_line_follower_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "metal_line_follower" "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "metal_line_follower" "/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg" ""
+)
+
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" NAME_WE)
+add_custom_target(_metal_line_follower_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "metal_line_follower" "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" ""
 )
 
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg" NAME_WE)
@@ -49,7 +54,7 @@ add_custom_target(_metal_line_follower_generate_messages_check_deps_${_filename}
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/metal_line_follower
@@ -67,13 +72,19 @@ _generate_msg_cpp(metal_line_follower
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/metal_line_follower
 )
 _generate_msg_cpp(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/metal_line_follower
 )
 _generate_msg_cpp(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/metal_line_follower
+)
+_generate_msg_cpp(metal_line_follower
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/metal_line_follower
@@ -93,13 +104,15 @@ add_custom_target(metal_line_follower_generate_messages_cpp
 add_dependencies(metal_line_follower_generate_messages metal_line_follower_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" NAME_WE)
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_cpp _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/proximityMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_cpp _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/sensorValMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_cpp _metal_line_follower_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" NAME_WE)
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg" NAME_WE)
+add_dependencies(metal_line_follower_generate_messages_cpp _metal_line_follower_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_cpp _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_cpp _metal_line_follower_generate_messages_check_deps_${_filename})
@@ -114,7 +127,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS metal_line_follower_generate_messag
 ### Section generating for lang: geneus
 ### Generating Messages
 _generate_msg_eus(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/metal_line_follower
@@ -132,13 +145,19 @@ _generate_msg_eus(metal_line_follower
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/metal_line_follower
 )
 _generate_msg_eus(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/metal_line_follower
 )
 _generate_msg_eus(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/metal_line_follower
+)
+_generate_msg_eus(metal_line_follower
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/metal_line_follower
@@ -158,13 +177,15 @@ add_custom_target(metal_line_follower_generate_messages_eus
 add_dependencies(metal_line_follower_generate_messages metal_line_follower_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" NAME_WE)
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_eus _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/proximityMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_eus _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/sensorValMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_eus _metal_line_follower_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" NAME_WE)
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg" NAME_WE)
+add_dependencies(metal_line_follower_generate_messages_eus _metal_line_follower_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_eus _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_eus _metal_line_follower_generate_messages_check_deps_${_filename})
@@ -179,7 +200,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS metal_line_follower_generate_messag
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/metal_line_follower
@@ -197,13 +218,19 @@ _generate_msg_lisp(metal_line_follower
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/metal_line_follower
 )
 _generate_msg_lisp(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/metal_line_follower
 )
 _generate_msg_lisp(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/metal_line_follower
+)
+_generate_msg_lisp(metal_line_follower
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/metal_line_follower
@@ -223,13 +250,15 @@ add_custom_target(metal_line_follower_generate_messages_lisp
 add_dependencies(metal_line_follower_generate_messages metal_line_follower_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" NAME_WE)
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_lisp _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/proximityMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_lisp _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/sensorValMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_lisp _metal_line_follower_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" NAME_WE)
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg" NAME_WE)
+add_dependencies(metal_line_follower_generate_messages_lisp _metal_line_follower_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_lisp _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_lisp _metal_line_follower_generate_messages_check_deps_${_filename})
@@ -244,7 +273,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS metal_line_follower_generate_messag
 ### Section generating for lang: gennodejs
 ### Generating Messages
 _generate_msg_nodejs(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/metal_line_follower
@@ -262,13 +291,19 @@ _generate_msg_nodejs(metal_line_follower
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/metal_line_follower
 )
 _generate_msg_nodejs(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/metal_line_follower
 )
 _generate_msg_nodejs(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/metal_line_follower
+)
+_generate_msg_nodejs(metal_line_follower
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/metal_line_follower
@@ -288,13 +323,15 @@ add_custom_target(metal_line_follower_generate_messages_nodejs
 add_dependencies(metal_line_follower_generate_messages metal_line_follower_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" NAME_WE)
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_nodejs _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/proximityMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_nodejs _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/sensorValMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_nodejs _metal_line_follower_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" NAME_WE)
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg" NAME_WE)
+add_dependencies(metal_line_follower_generate_messages_nodejs _metal_line_follower_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_nodejs _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_nodejs _metal_line_follower_generate_messages_check_deps_${_filename})
@@ -309,7 +346,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS metal_line_follower_generate_messag
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/metal_line_follower
@@ -327,13 +364,19 @@ _generate_msg_py(metal_line_follower
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/metal_line_follower
 )
 _generate_msg_py(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/metal_line_follower
 )
 _generate_msg_py(metal_line_follower
-  "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg"
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/metal_line_follower
+)
+_generate_msg_py(metal_line_follower
+  "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/metal_line_follower
@@ -353,13 +396,15 @@ add_custom_target(metal_line_follower_generate_messages_py
 add_dependencies(metal_line_follower_generate_messages metal_line_follower_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" NAME_WE)
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_py _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/proximityMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_py _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/sensorValMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_py _metal_line_follower_generate_messages_check_deps_${_filename})
-get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg" NAME_WE)
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg" NAME_WE)
+add_dependencies(metal_line_follower_generate_messages_py _metal_line_follower_generate_messages_check_deps_${_filename})
+get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_py _metal_line_follower_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg" NAME_WE)
 add_dependencies(metal_line_follower_generate_messages_py _metal_line_follower_generate_messages_check_deps_${_filename})

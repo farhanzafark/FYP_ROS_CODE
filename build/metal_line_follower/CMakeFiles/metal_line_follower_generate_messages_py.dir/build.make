@@ -53,18 +53,19 @@ CMAKE_BINARY_DIR = /home/farhan/catkin_ws/build
 # Include the progress variables for this target.
 include metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_py.dir/progress.make
 
-metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_rfidMsg.py
+metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_myCustom.py
 metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_proximityMsg.py
 metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_sensorValMsg.py
+metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_graphMsg.py
+metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_rfidMsg.py
 metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_ultrasonicMsg.py
-metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_myCustom.py
 metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/__init__.py
 
 
-/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_rfidMsg.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
-/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_rfidMsg.py: /home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG metal_line_follower/rfidMsg"
-	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg
+/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_myCustom.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_myCustom.py: /home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG metal_line_follower/myCustom"
+	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg
 
 /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_proximityMsg.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_proximityMsg.py: /home/farhan/catkin_ws/src/metal_line_follower/msg/proximityMsg.msg
@@ -76,31 +77,38 @@ metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_py: /home/f
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python from MSG metal_line_follower/sensorValMsg"
 	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/farhan/catkin_ws/src/metal_line_follower/msg/sensorValMsg.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg
 
+/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_graphMsg.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_graphMsg.py: /home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python from MSG metal_line_follower/graphMsg"
+	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg
+
+/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_rfidMsg.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
+/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_rfidMsg.py: /home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Python from MSG metal_line_follower/rfidMsg"
+	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg
+
 /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_ultrasonicMsg.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
 /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_ultrasonicMsg.py: /home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python from MSG metal_line_follower/ultrasonicMsg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Python from MSG metal_line_follower/ultrasonicMsg"
 	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg
 
-/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_myCustom.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
-/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_myCustom.py: /home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Python from MSG metal_line_follower/myCustom"
-	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg
-
 /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/__init__.py: /opt/ros/kinetic/lib/genpy/genmsg_py.py
-/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/__init__.py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_rfidMsg.py
+/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/__init__.py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_myCustom.py
 /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/__init__.py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_proximityMsg.py
 /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/__init__.py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_sensorValMsg.py
+/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/__init__.py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_graphMsg.py
+/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/__init__.py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_rfidMsg.py
 /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/__init__.py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_ultrasonicMsg.py
-/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/__init__.py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_myCustom.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Python msg __init__.py for metal_line_follower"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Python msg __init__.py for metal_line_follower"
 	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg --initpy
 
 metal_line_follower_generate_messages_py: metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_py
-metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_rfidMsg.py
+metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_myCustom.py
 metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_proximityMsg.py
 metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_sensorValMsg.py
+metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_graphMsg.py
+metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_rfidMsg.py
 metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_ultrasonicMsg.py
-metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_myCustom.py
 metal_line_follower_generate_messages_py: /home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/__init__.py
 metal_line_follower_generate_messages_py: metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_py.dir/build.make
 

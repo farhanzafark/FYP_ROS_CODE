@@ -3,6 +3,7 @@
 
 let sensorValMsg = require('./sensorValMsg.js');
 let rfidMsg = require('./rfidMsg.js');
+let graphMsg = require('./graphMsg.js');
 let parameterMsg = require('./parameterMsg.js');
 let myCustom = require('./myCustom.js');
 let motorMsg = require('./motorMsg.js');
@@ -12,6 +13,7 @@ let ultrasonicMsg = require('./ultrasonicMsg.js');
 module.exports = {
   sensorValMsg: sensorValMsg,
   rfidMsg: rfidMsg,
+  graphMsg: graphMsg,
   parameterMsg: parameterMsg,
   myCustom: myCustom,
   motorMsg: motorMsg,

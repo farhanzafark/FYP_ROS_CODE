@@ -55,6 +55,7 @@ find_package(catkin REQUIRED COMPONENTS
    rfidMsg.msg
    proximityMsg.msg
    ultrasonicMsg.msg
+   graphMsg.msg
 #   Message1.msg
 #   Message2.msg
  )
