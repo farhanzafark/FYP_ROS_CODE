@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/farhan/catkin_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: install/local
-
-.PHONY : install/local/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -89,6 +78,28 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: install/local
+
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
+
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -110,17 +121,6 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
 
 # Special rule for the target test
 test:
@@ -166,21 +166,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_eus.dir/rule:
-	cd /home/farhan/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_eus.dir/rule
-.PHONY : metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-metal_line_follower_generate_messages_eus: metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_eus.dir/rule
-
-.PHONY : metal_line_follower_generate_messages_eus
-
-# fast build rule for target.
-metal_line_follower_generate_messages_eus/fast:
-	cd /home/farhan/catkin_ws/build && $(MAKE) -f metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_eus.dir/build.make metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_eus.dir/build
-.PHONY : metal_line_follower_generate_messages_eus/fast
-
-# Convenience name for target.
 metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_ultrasonicMsg.dir/rule:
 	cd /home/farhan/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_ultrasonicMsg.dir/rule
 .PHONY : metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_ultrasonicMsg.dir/rule
@@ -194,6 +179,36 @@ _metal_line_follower_generate_messages_check_deps_ultrasonicMsg: metal_line_foll
 _metal_line_follower_generate_messages_check_deps_ultrasonicMsg/fast:
 	cd /home/farhan/catkin_ws/build && $(MAKE) -f metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_ultrasonicMsg.dir/build.make metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_ultrasonicMsg.dir/build
 .PHONY : _metal_line_follower_generate_messages_check_deps_ultrasonicMsg/fast
+
+# Convenience name for target.
+metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_graphMsg.dir/rule:
+	cd /home/farhan/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_graphMsg.dir/rule
+.PHONY : metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_graphMsg.dir/rule
+
+# Convenience name for target.
+_metal_line_follower_generate_messages_check_deps_graphMsg: metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_graphMsg.dir/rule
+
+.PHONY : _metal_line_follower_generate_messages_check_deps_graphMsg
+
+# fast build rule for target.
+_metal_line_follower_generate_messages_check_deps_graphMsg/fast:
+	cd /home/farhan/catkin_ws/build && $(MAKE) -f metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_graphMsg.dir/build.make metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_graphMsg.dir/build
+.PHONY : _metal_line_follower_generate_messages_check_deps_graphMsg/fast
+
+# Convenience name for target.
+metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_sensorValMsg.dir/rule:
+	cd /home/farhan/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_sensorValMsg.dir/rule
+.PHONY : metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_sensorValMsg.dir/rule
+
+# Convenience name for target.
+_metal_line_follower_generate_messages_check_deps_sensorValMsg: metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_sensorValMsg.dir/rule
+
+.PHONY : _metal_line_follower_generate_messages_check_deps_sensorValMsg
+
+# fast build rule for target.
+_metal_line_follower_generate_messages_check_deps_sensorValMsg/fast:
+	cd /home/farhan/catkin_ws/build && $(MAKE) -f metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_sensorValMsg.dir/build.make metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_sensorValMsg.dir/build
+.PHONY : _metal_line_follower_generate_messages_check_deps_sensorValMsg/fast
 
 # Convenience name for target.
 metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_cpp.dir/rule:
@@ -256,6 +271,51 @@ _metal_line_follower_generate_messages_check_deps_rfidMsg/fast:
 .PHONY : _metal_line_follower_generate_messages_check_deps_rfidMsg/fast
 
 # Convenience name for target.
+metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_beginOpMsg.dir/rule:
+	cd /home/farhan/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_beginOpMsg.dir/rule
+.PHONY : metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_beginOpMsg.dir/rule
+
+# Convenience name for target.
+_metal_line_follower_generate_messages_check_deps_beginOpMsg: metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_beginOpMsg.dir/rule
+
+.PHONY : _metal_line_follower_generate_messages_check_deps_beginOpMsg
+
+# fast build rule for target.
+_metal_line_follower_generate_messages_check_deps_beginOpMsg/fast:
+	cd /home/farhan/catkin_ws/build && $(MAKE) -f metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_beginOpMsg.dir/build.make metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_beginOpMsg.dir/build
+.PHONY : _metal_line_follower_generate_messages_check_deps_beginOpMsg/fast
+
+# Convenience name for target.
+metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_eus.dir/rule:
+	cd /home/farhan/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_eus.dir/rule
+.PHONY : metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+metal_line_follower_generate_messages_eus: metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_eus.dir/rule
+
+.PHONY : metal_line_follower_generate_messages_eus
+
+# fast build rule for target.
+metal_line_follower_generate_messages_eus/fast:
+	cd /home/farhan/catkin_ws/build && $(MAKE) -f metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_eus.dir/build.make metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_eus.dir/build
+.PHONY : metal_line_follower_generate_messages_eus/fast
+
+# Convenience name for target.
+metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_lisp.dir/rule:
+	cd /home/farhan/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_lisp.dir/rule
+.PHONY : metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+metal_line_follower_generate_messages_lisp: metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_lisp.dir/rule
+
+.PHONY : metal_line_follower_generate_messages_lisp
+
+# fast build rule for target.
+metal_line_follower_generate_messages_lisp/fast:
+	cd /home/farhan/catkin_ws/build && $(MAKE) -f metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_lisp.dir/build.make metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_lisp.dir/build
+.PHONY : metal_line_follower_generate_messages_lisp/fast
+
+# Convenience name for target.
 metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_myCustom.dir/rule:
 	cd /home/farhan/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_myCustom.dir/rule
 .PHONY : metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_myCustom.dir/rule
@@ -269,36 +329,6 @@ _metal_line_follower_generate_messages_check_deps_myCustom: metal_line_follower/
 _metal_line_follower_generate_messages_check_deps_myCustom/fast:
 	cd /home/farhan/catkin_ws/build && $(MAKE) -f metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_myCustom.dir/build.make metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_myCustom.dir/build
 .PHONY : _metal_line_follower_generate_messages_check_deps_myCustom/fast
-
-# Convenience name for target.
-metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_graphMsg.dir/rule:
-	cd /home/farhan/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_graphMsg.dir/rule
-.PHONY : metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_graphMsg.dir/rule
-
-# Convenience name for target.
-_metal_line_follower_generate_messages_check_deps_graphMsg: metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_graphMsg.dir/rule
-
-.PHONY : _metal_line_follower_generate_messages_check_deps_graphMsg
-
-# fast build rule for target.
-_metal_line_follower_generate_messages_check_deps_graphMsg/fast:
-	cd /home/farhan/catkin_ws/build && $(MAKE) -f metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_graphMsg.dir/build.make metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_graphMsg.dir/build
-.PHONY : _metal_line_follower_generate_messages_check_deps_graphMsg/fast
-
-# Convenience name for target.
-metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_sensorValMsg.dir/rule:
-	cd /home/farhan/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_sensorValMsg.dir/rule
-.PHONY : metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_sensorValMsg.dir/rule
-
-# Convenience name for target.
-_metal_line_follower_generate_messages_check_deps_sensorValMsg: metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_sensorValMsg.dir/rule
-
-.PHONY : _metal_line_follower_generate_messages_check_deps_sensorValMsg
-
-# fast build rule for target.
-_metal_line_follower_generate_messages_check_deps_sensorValMsg/fast:
-	cd /home/farhan/catkin_ws/build && $(MAKE) -f metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_sensorValMsg.dir/build.make metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_sensorValMsg.dir/build
-.PHONY : _metal_line_follower_generate_messages_check_deps_sensorValMsg/fast
 
 # Convenience name for target.
 metal_line_follower/CMakeFiles/_metal_line_follower_generate_messages_check_deps_proximityMsg.dir/rule:
@@ -405,39 +435,27 @@ metal_line_follower_genpy/fast:
 	cd /home/farhan/catkin_ws/build && $(MAKE) -f metal_line_follower/CMakeFiles/metal_line_follower_genpy.dir/build.make metal_line_follower/CMakeFiles/metal_line_follower_genpy.dir/build
 .PHONY : metal_line_follower_genpy/fast
 
-# Convenience name for target.
-metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_lisp.dir/rule:
-	cd /home/farhan/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_lisp.dir/rule
-.PHONY : metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-metal_line_follower_generate_messages_lisp: metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_lisp.dir/rule
-
-.PHONY : metal_line_follower_generate_messages_lisp
-
-# fast build rule for target.
-metal_line_follower_generate_messages_lisp/fast:
-	cd /home/farhan/catkin_ws/build && $(MAKE) -f metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_lisp.dir/build.make metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_lisp.dir/build
-.PHONY : metal_line_follower_generate_messages_lisp/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... metal_line_follower_generate_messages_eus"
-	@echo "... install/local"
 	@echo "... edit_cache"
 	@echo "... _metal_line_follower_generate_messages_check_deps_ultrasonicMsg"
+	@echo "... _metal_line_follower_generate_messages_check_deps_graphMsg"
+	@echo "... _metal_line_follower_generate_messages_check_deps_sensorValMsg"
 	@echo "... rebuild_cache"
 	@echo "... metal_line_follower_generate_messages_cpp"
 	@echo "... metal_line_follower_generate_messages"
 	@echo "... metal_line_follower_generate_messages_py"
 	@echo "... _metal_line_follower_generate_messages_check_deps_rfidMsg"
+	@echo "... _metal_line_follower_generate_messages_check_deps_beginOpMsg"
+	@echo "... metal_line_follower_generate_messages_eus"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... metal_line_follower_generate_messages_lisp"
 	@echo "... _metal_line_follower_generate_messages_check_deps_myCustom"
-	@echo "... _metal_line_follower_generate_messages_check_deps_graphMsg"
-	@echo "... _metal_line_follower_generate_messages_check_deps_sensorValMsg"
 	@echo "... _metal_line_follower_generate_messages_check_deps_proximityMsg"
 	@echo "... metal_line_follower_geneus"
 	@echo "... metal_line_follower_genlisp"
@@ -447,8 +465,6 @@ help:
 	@echo "... metal_line_follower_gennodejs"
 	@echo "... metal_line_follower_genpy"
 	@echo "... install"
-	@echo "... metal_line_follower_generate_messages_lisp"
-	@echo "... install/strip"
 	@echo "... test"
 .PHONY : help
 

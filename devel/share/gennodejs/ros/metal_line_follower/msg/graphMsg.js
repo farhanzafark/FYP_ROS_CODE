@@ -20,6 +20,9 @@ class graphMsg {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.sender = null;
       this.shortestPath = null;
+      this.enableFlag = null;
+      this.xCoordinates = null;
+      this.yCoordinates = null;
     }
     else {
       if (initObj.hasOwnProperty('sender')) {
@@ -34,6 +37,24 @@ class graphMsg {
       else {
         this.shortestPath = '';
       }
+      if (initObj.hasOwnProperty('enableFlag')) {
+        this.enableFlag = initObj.enableFlag
+      }
+      else {
+        this.enableFlag = false;
+      }
+      if (initObj.hasOwnProperty('xCoordinates')) {
+        this.xCoordinates = initObj.xCoordinates
+      }
+      else {
+        this.xCoordinates = '';
+      }
+      if (initObj.hasOwnProperty('yCoordinates')) {
+        this.yCoordinates = initObj.yCoordinates
+      }
+      else {
+        this.yCoordinates = '';
+      }
     }
   }
 
@@ -43,6 +64,12 @@ class graphMsg {
     bufferOffset = _serializer.string(obj.sender, buffer, bufferOffset);
     // Serialize message field [shortestPath]
     bufferOffset = _serializer.string(obj.shortestPath, buffer, bufferOffset);
+    // Serialize message field [enableFlag]
+    bufferOffset = _serializer.bool(obj.enableFlag, buffer, bufferOffset);
+    // Serialize message field [xCoordinates]
+    bufferOffset = _serializer.string(obj.xCoordinates, buffer, bufferOffset);
+    // Serialize message field [yCoordinates]
+    bufferOffset = _serializer.string(obj.yCoordinates, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -54,6 +81,12 @@ class graphMsg {
     data.sender = _deserializer.string(buffer, bufferOffset);
     // Deserialize message field [shortestPath]
     data.shortestPath = _deserializer.string(buffer, bufferOffset);
+    // Deserialize message field [enableFlag]
+    data.enableFlag = _deserializer.bool(buffer, bufferOffset);
+    // Deserialize message field [xCoordinates]
+    data.xCoordinates = _deserializer.string(buffer, bufferOffset);
+    // Deserialize message field [yCoordinates]
+    data.yCoordinates = _deserializer.string(buffer, bufferOffset);
     return data;
   }
 
@@ -61,7 +94,9 @@ class graphMsg {
     let length = 0;
     length += object.sender.length;
     length += object.shortestPath.length;
-    return length + 8;
+    length += object.xCoordinates.length;
+    length += object.yCoordinates.length;
+    return length + 17;
   }
 
   static datatype() {
@@ -71,7 +106,7 @@ class graphMsg {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'e3a1b9063ec7f8e5e0bd46e697b1e154';
+    return '4c019807c6f85ba6ce267a24b9dc89cd';
   }
 
   static messageDefinition() {
@@ -79,6 +114,9 @@ class graphMsg {
     return `
     string sender
     string shortestPath
+    bool enableFlag
+    string xCoordinates
+    string yCoordinates
     
     `;
   }
@@ -101,6 +139,27 @@ class graphMsg {
     }
     else {
       resolved.shortestPath = ''
+    }
+
+    if (msg.enableFlag !== undefined) {
+      resolved.enableFlag = msg.enableFlag;
+    }
+    else {
+      resolved.enableFlag = false
+    }
+
+    if (msg.xCoordinates !== undefined) {
+      resolved.xCoordinates = msg.xCoordinates;
+    }
+    else {
+      resolved.xCoordinates = ''
+    }
+
+    if (msg.yCoordinates !== undefined) {
+      resolved.yCoordinates = msg.yCoordinates;
+    }
+    else {
+      resolved.yCoordinates = ''
     }
 
     return resolved;

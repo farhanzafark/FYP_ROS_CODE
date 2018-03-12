@@ -3,4 +3,10 @@
           SENDER
           SHORTESTPATH-VAL
           SHORTESTPATH
+          ENABLEFLAG-VAL
+          ENABLEFLAG
+          XCOORDINATES-VAL
+          XCOORDINATES
+          YCOORDINATES-VAL
+          YCOORDINATES
 ))

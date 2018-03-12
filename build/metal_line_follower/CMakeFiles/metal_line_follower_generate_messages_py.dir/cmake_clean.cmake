@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/metal_line_follower_generate_messages_py"
+  "/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_beginOpMsg.py"
   "/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_myCustom.py"
   "/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_proximityMsg.py"
   "/home/farhan/catkin_ws/devel/lib/python2.7/dist-packages/metal_line_follower/msg/_sensorValMsg.py"

@@ -10,7 +10,7 @@ sendFlag = 0
 
 def talker():
 	global sendFlag
-	pub = rospy.Publisher('chatter2',rfidMsg,queue_size=10)
+	pub = rospy.Publisher('rfidChatter',rfidMsg,queue_size=10)
 	rospy.init_node('talker', anonymous=True)
 	rate = rospy.Rate(10) # 10hz
 	

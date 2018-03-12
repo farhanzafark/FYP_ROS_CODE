@@ -56,6 +56,7 @@ find_package(catkin REQUIRED COMPONENTS
    proximityMsg.msg
    ultrasonicMsg.msg
    graphMsg.msg
+   beginOpMsg.msg
 #   Message1.msg
 #   Message2.msg
  )

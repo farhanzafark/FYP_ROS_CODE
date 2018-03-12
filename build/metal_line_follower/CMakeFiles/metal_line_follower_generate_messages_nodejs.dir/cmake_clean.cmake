@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/metal_line_follower_generate_messages_nodejs"
+  "/home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/beginOpMsg.js"
   "/home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/myCustom.js"
   "/home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/proximityMsg.js"
   "/home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/sensorValMsg.js"

@@ -4,6 +4,8 @@
 (defsystem "metal_line_follower-msg"
   :depends-on (:roslisp-msg-protocol :roslisp-utils )
   :components ((:file "_package")
+    (:file "beginOpMsg" :depends-on ("_package_beginOpMsg"))
+    (:file "_package_beginOpMsg" :depends-on ("_package"))
     (:file "graphMsg" :depends-on ("_package_graphMsg"))
     (:file "_package_graphMsg" :depends-on ("_package"))
     (:file "motorMsg" :depends-on ("_package_motorMsg"))

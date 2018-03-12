@@ -7,14 +7,17 @@ import struct
 
 
 class graphMsg(genpy.Message):
-  _md5sum = "e3a1b9063ec7f8e5e0bd46e697b1e154"
+  _md5sum = "4c019807c6f85ba6ce267a24b9dc89cd"
   _type = "metal_line_follower/graphMsg"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """string sender
 string shortestPath
+bool enableFlag
+string xCoordinates
+string yCoordinates
 """
-  __slots__ = ['sender','shortestPath']
-  _slot_types = ['string','string']
+  __slots__ = ['sender','shortestPath','enableFlag','xCoordinates','yCoordinates']
+  _slot_types = ['string','string','bool','string','string']
 
   def __init__(self, *args, **kwds):
     """
@@ -24,7 +27,7 @@ string shortestPath
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       sender,shortestPath
+       sender,shortestPath,enableFlag,xCoordinates,yCoordinates
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -37,9 +40,18 @@ string shortestPath
         self.sender = ''
       if self.shortestPath is None:
         self.shortestPath = ''
+      if self.enableFlag is None:
+        self.enableFlag = False
+      if self.xCoordinates is None:
+        self.xCoordinates = ''
+      if self.yCoordinates is None:
+        self.yCoordinates = ''
     else:
       self.sender = ''
       self.shortestPath = ''
+      self.enableFlag = False
+      self.xCoordinates = ''
+      self.yCoordinates = ''
 
   def _get_types(self):
     """
@@ -60,6 +72,19 @@ string shortestPath
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self.shortestPath
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      buff.write(_get_struct_B().pack(self.enableFlag))
+      _x = self.xCoordinates
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self.yCoordinates
       length = len(_x)
       if python3 or type(_x) == unicode:
         _x = _x.encode('utf-8')
@@ -93,6 +118,28 @@ string shortestPath
         self.shortestPath = str[start:end].decode('utf-8')
       else:
         self.shortestPath = str[start:end]
+      start = end
+      end += 1
+      (self.enableFlag,) = _get_struct_B().unpack(str[start:end])
+      self.enableFlag = bool(self.enableFlag)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.xCoordinates = str[start:end].decode('utf-8')
+      else:
+        self.xCoordinates = str[start:end]
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.yCoordinates = str[start:end].decode('utf-8')
+      else:
+        self.yCoordinates = str[start:end]
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -112,6 +159,19 @@ string shortestPath
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
       _x = self.shortestPath
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      buff.write(_get_struct_B().pack(self.enableFlag))
+      _x = self.xCoordinates
+      length = len(_x)
+      if python3 or type(_x) == unicode:
+        _x = _x.encode('utf-8')
+        length = len(_x)
+      buff.write(struct.pack('<I%ss'%length, length, _x))
+      _x = self.yCoordinates
       length = len(_x)
       if python3 or type(_x) == unicode:
         _x = _x.encode('utf-8')
@@ -146,6 +206,28 @@ string shortestPath
         self.shortestPath = str[start:end].decode('utf-8')
       else:
         self.shortestPath = str[start:end]
+      start = end
+      end += 1
+      (self.enableFlag,) = _get_struct_B().unpack(str[start:end])
+      self.enableFlag = bool(self.enableFlag)
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.xCoordinates = str[start:end].decode('utf-8')
+      else:
+        self.xCoordinates = str[start:end]
+      start = end
+      end += 4
+      (length,) = _struct_I.unpack(str[start:end])
+      start = end
+      end += length
+      if python3:
+        self.yCoordinates = str[start:end].decode('utf-8')
+      else:
+        self.yCoordinates = str[start:end]
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -154,3 +236,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
+_struct_B = None
+def _get_struct_B():
+    global _struct_B
+    if _struct_B is None:
+        _struct_B = struct.Struct("<B")
+    return _struct_B

@@ -40,6 +40,7 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
     "/home/farhan/catkin_ws/src/metal_line_follower/msg/proximityMsg.msg"
     "/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg"
     "/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg"
+    "/home/farhan/catkin_ws/src/metal_line_follower/msg/beginOpMsg.msg"
     )
 endif()
 

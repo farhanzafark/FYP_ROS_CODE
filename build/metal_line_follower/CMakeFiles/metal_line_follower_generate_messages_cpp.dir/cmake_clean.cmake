@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/metal_line_follower_generate_messages_cpp"
+  "/home/farhan/catkin_ws/devel/include/metal_line_follower/beginOpMsg.h"
   "/home/farhan/catkin_ws/devel/include/metal_line_follower/myCustom.h"
   "/home/farhan/catkin_ws/devel/include/metal_line_follower/proximityMsg.h"
   "/home/farhan/catkin_ws/devel/include/metal_line_follower/sensorValMsg.h"

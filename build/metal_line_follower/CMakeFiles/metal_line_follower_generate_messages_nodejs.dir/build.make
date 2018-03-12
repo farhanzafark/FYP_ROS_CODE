@@ -53,6 +53,7 @@ CMAKE_BINARY_DIR = /home/farhan/catkin_ws/build
 # Include the progress variables for this target.
 include metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_nodejs.dir/progress.make
 
+metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_nodejs: /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/beginOpMsg.js
 metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_nodejs: /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/myCustom.js
 metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_nodejs: /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/proximityMsg.js
 metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_nodejs: /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/sensorValMsg.js
@@ -61,37 +62,43 @@ metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_nodejs: /ho
 metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_nodejs: /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/ultrasonicMsg.js
 
 
+/home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/beginOpMsg.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
+/home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/beginOpMsg.js: /home/farhan/catkin_ws/src/metal_line_follower/msg/beginOpMsg.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from metal_line_follower/beginOpMsg.msg"
+	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/farhan/catkin_ws/src/metal_line_follower/msg/beginOpMsg.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg
+
 /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/myCustom.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/myCustom.js: /home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from metal_line_follower/myCustom.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from metal_line_follower/myCustom.msg"
 	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg
 
 /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/proximityMsg.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/proximityMsg.js: /home/farhan/catkin_ws/src/metal_line_follower/msg/proximityMsg.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from metal_line_follower/proximityMsg.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from metal_line_follower/proximityMsg.msg"
 	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/farhan/catkin_ws/src/metal_line_follower/msg/proximityMsg.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg
 
 /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/sensorValMsg.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/sensorValMsg.js: /home/farhan/catkin_ws/src/metal_line_follower/msg/sensorValMsg.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Javascript code from metal_line_follower/sensorValMsg.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from metal_line_follower/sensorValMsg.msg"
 	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/farhan/catkin_ws/src/metal_line_follower/msg/sensorValMsg.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg
 
 /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/graphMsg.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/graphMsg.js: /home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Javascript code from metal_line_follower/graphMsg.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Javascript code from metal_line_follower/graphMsg.msg"
 	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg
 
 /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/rfidMsg.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/rfidMsg.js: /home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating Javascript code from metal_line_follower/rfidMsg.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Javascript code from metal_line_follower/rfidMsg.msg"
 	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg
 
 /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/ultrasonicMsg.js: /opt/ros/kinetic/lib/gennodejs/gen_nodejs.py
 /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/ultrasonicMsg.js: /home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Javascript code from metal_line_follower/ultrasonicMsg.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating Javascript code from metal_line_follower/ultrasonicMsg.msg"
 	cd /home/farhan/catkin_ws/build/metal_line_follower && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg -Imetal_line_follower:/home/farhan/catkin_ws/src/metal_line_follower/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -p metal_line_follower -o /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg
 
 metal_line_follower_generate_messages_nodejs: metal_line_follower/CMakeFiles/metal_line_follower_generate_messages_nodejs
+metal_line_follower_generate_messages_nodejs: /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/beginOpMsg.js
 metal_line_follower_generate_messages_nodejs: /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/myCustom.js
 metal_line_follower_generate_messages_nodejs: /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/proximityMsg.js
 metal_line_follower_generate_messages_nodejs: /home/farhan/catkin_ws/devel/share/gennodejs/ros/metal_line_follower/msg/sensorValMsg.js

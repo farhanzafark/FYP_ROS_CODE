@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/metal_line_follower_generate_messages_lisp"
+  "/home/farhan/catkin_ws/devel/share/common-lisp/ros/metal_line_follower/msg/beginOpMsg.lisp"
   "/home/farhan/catkin_ws/devel/share/common-lisp/ros/metal_line_follower/msg/myCustom.lisp"
   "/home/farhan/catkin_ws/devel/share/common-lisp/ros/metal_line_follower/msg/proximityMsg.lisp"
   "/home/farhan/catkin_ws/devel/share/common-lisp/ros/metal_line_follower/msg/sensorValMsg.lisp"

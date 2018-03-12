@@ -25,11 +25,17 @@ struct graphMsg_
 
   graphMsg_()
     : sender()
-    , shortestPath()  {
+    , shortestPath()
+    , enableFlag(false)
+    , xCoordinates()
+    , yCoordinates()  {
     }
   graphMsg_(const ContainerAllocator& _alloc)
     : sender(_alloc)
-    , shortestPath(_alloc)  {
+    , shortestPath(_alloc)
+    , enableFlag(false)
+    , xCoordinates(_alloc)
+    , yCoordinates(_alloc)  {
   (void)_alloc;
     }
 
@@ -40,6 +46,15 @@ struct graphMsg_
 
    typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _shortestPath_type;
   _shortestPath_type shortestPath;
+
+   typedef uint8_t _enableFlag_type;
+  _enableFlag_type enableFlag;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _xCoordinates_type;
+  _xCoordinates_type xCoordinates;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _yCoordinates_type;
+  _yCoordinates_type yCoordinates;
 
 
 
@@ -118,12 +133,12 @@ struct MD5Sum< ::metal_line_follower::graphMsg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "e3a1b9063ec7f8e5e0bd46e697b1e154";
+    return "4c019807c6f85ba6ce267a24b9dc89cd";
   }
 
   static const char* value(const ::metal_line_follower::graphMsg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xe3a1b9063ec7f8e5ULL;
-  static const uint64_t static_value2 = 0xe0bd46e697b1e154ULL;
+  static const uint64_t static_value1 = 0x4c019807c6f85ba6ULL;
+  static const uint64_t static_value2 = 0xce267a24b9dc89cdULL;
 };
 
 template<class ContainerAllocator>
@@ -144,6 +159,9 @@ struct Definition< ::metal_line_follower::graphMsg_<ContainerAllocator> >
   {
     return "string sender\n\
 string shortestPath\n\
+bool enableFlag\n\
+string xCoordinates\n\
+string yCoordinates\n\
 ";
   }
 
@@ -164,6 +182,9 @@ namespace serialization
     {
       stream.next(m.sender);
       stream.next(m.shortestPath);
+      stream.next(m.enableFlag);
+      stream.next(m.xCoordinates);
+      stream.next(m.yCoordinates);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -186,6 +207,12 @@ struct Printer< ::metal_line_follower::graphMsg_<ContainerAllocator> >
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.sender);
     s << indent << "shortestPath: ";
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.shortestPath);
+    s << indent << "enableFlag: ";
+    Printer<uint8_t>::stream(s, indent + "  ", v.enableFlag);
+    s << indent << "xCoordinates: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.xCoordinates);
+    s << indent << "yCoordinates: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.yCoordinates);
   }
 };
 

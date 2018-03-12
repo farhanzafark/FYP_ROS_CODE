@@ -2,10 +2,11 @@
 
 import rospy
 from std_msgs.msg import String
+from metal_line_follower.msg import beginOpMsg
 from metal_line_follower.msg import sensorValMsg
 from metal_line_follower.msg import rfidMsg
 from metal_line_follower.msg import ultrasonicMsg
-#from metal_line_follower.msg import myCustom
+from metal_line_follower.msg import graphMsg
 import RPi.GPIO as GPIO
 import time
 
@@ -29,6 +30,9 @@ pEnB = GPIO.PWM(enB,50)
 
 stopFlag = False
 utFlag = False
+enableFlag = False
+shortestPathList = []
+nextNode = ""
 
 def setup():
 	
@@ -46,73 +50,103 @@ def setup():
 
 def proximityCallback(msg):
 	global stopFlag
+	global enableFlag
+	
 	sender = msg.sender
 	#leftProximityVal = msg.msgData(1)
 	#rightProximityVal = msg.msgData(2)
-	if stopFlag == False:
-		if sender == "test_sender":
+	if enableFlag == True:
+		if stopFlag == False:
+			if sender == "test_sender":
 
-			rospy.loginfo(rospy.get_caller_id() + 'sender: %s\nsensor values: %s', sender,msg.msgData)
-	#	if str(data.data)=="Hello":
-	#		rospy.loginfo("Custom Message: %s", data.data)
-		elif sender == "proximity":
-			#get data
-			msgData = (msg.leftSensorIn,msg.centerSensorIn,msg.rightSensorIn)
-			rospy.loginfo(rospy.get_caller_id() + 'sender: %s\nsensor values: %s', sender,msgData)
-			left = msg.leftSensorIn
-			center = msg.centerSensorIn
-			right = msg.rightSensorIn
-			lineFollow(left,center,right)
+				rospy.loginfo(rospy.get_caller_id() + 'sender: %s\nsensor values: %s', sender,msg.msgData)
+		#	if str(data.data)=="Hello":
+		#		rospy.loginfo("Custom Message: %s", data.data)
+			elif sender == "proximity":
+				#get data
+				msgData = (msg.leftSensorIn,msg.centerSensorIn,msg.rightSensorIn)
+				rospy.loginfo(rospy.get_caller_id() + 'sender: %s\nsensor values: %s', sender,msgData)
+				left = msg.leftSensorIn
+				center = msg.centerSensorIn
+				right = msg.rightSensorIn
+				lineFollow(left,center,right)
 
 
 def rfidCallback(msg):
 	global stopFlag
 	global utFlag
+	global enableFlag
+	
 	stopFlag = True
 	sender = msg.sender
-	if utFlag == False:
-		 
-		if sender == "rfid":
-			#get data
-			msgData = msg.id
-			rospy.loginfo(rospy.get_caller_id() + 'sender: %s\nsensor values: %s', sender,msgData)
-			if msgData == "a":
-				print("Go to node b")
-			elif msgData == "b":
-				print("Go to node c")
-			elif msgData == "c":
-				print("Go to node d")
-			elif msgData == "d":
-				print("Go to node e")
-			elif msgData == "e":
-				print("End")
-		
-			motorStop()
-			time.sleep(2)
-			if msgData != "e":
-				stopFlag = False
-			#get next direction from map
-			#turn
+	if enableFlag == True:
+		if utFlag == False:
+			 
+			if sender == "rfid":
+				#get data
+				msgData = msg.id
+				rospy.loginfo(rospy.get_caller_id() + 'sender: %s\nsensor values: %s', sender,msgData)
+				nodeIndex = shortestPathList.index(nextNode)
+				if msgData == nextNode:
+					if nodeIndex != (len(shortestPathList)-1): 
+						nextNode = shortestPathList[nodeIndex+1]
+						stopFlag = False
+					else:
+						stopFlag = True
+						motorStop()
+					
+				'''if msgData == "a":
+					print("Go to node b")
+				elif msgData == "b":
+					print("Go to node c")
+				elif msgData == "c":
+					print("Go to node d")
+				elif msgData == "d":
+					print("Go to node e")
+				elif msgData == "e":
+					print("End")
+				
+				motorStop()
+				time.sleep(2)
+				if msgData != "e":
+					stopFlag = False
+				#get next direction from map
+				#turn'''
 
 def ultrasonicCallback(msg):
 	global stopFlag
 	global utFlag
+	global enableFlag
 	
 	sender = msg.sender
-	if sender == "ultrasonic":
-		msgData = msg.status
-		if msgData == "Clear":
-			StopFlag = False
-			utFlag = False
-		else:
-			utFlag = True
-			stopFlag = True
-			rospy.loginfo(rospy.get_caller_id() + 'sender: %s\nsensor values: %s', sender,msgData)
-		motorStop()
+	if enableFlag == True:
+		if sender == "ultrasonic":
+			msgData = msg.status
+			if msgData == "Clear":
+				StopFlag = False
+				utFlag = False
+			else:
+				utFlag = True
+				stopFlag = True
+				rospy.loginfo(rospy.get_caller_id() + 'sender: %s\nsensor values: %s', sender,msgData)
+			motorStop()
 		
-	#get next direction from map
-	#turn
+		#get next direction from map
+		#turn
 		
+def graphCallback(msg):
+	global enableFlag
+	global shortestPathList
+	
+	sender = msg.sender
+	if sender == "graph":
+		nodesListString = sender.shortestPath
+		nodesListString.strip(",")
+		shortestPathList = nodesListString.split(",")
+		nextNode = shortestPathList
+		if msg.enableFlag == True:
+			enableFlag = True
+
 
 def listener():
 
@@ -121,12 +155,27 @@ def listener():
     # anonymous=True flag means that rospy will choose a unique
     # name for our 'listener' node so that multiple listeners can
     # run simultaneously.
+    global enableFlag
     rospy.init_node('central_processor', anonymous=True)
+    rate = rospy.Rate(1000)
+
+    while not rospy.is_shutdown():
+            try:
+		    if enableFlag == False:
+			    pub = rospy.Publisher('beginOperationChatter',beginOpMsg,queue_size=10)
+			    beginOperationMsg = beginOpMsg()
+			    beginOperationMsg.enableOperation = True
+			    rospy.loginfo(beginOperationMsg)
+			    pub.publish(beginOperationMsg) 
+			    rospy.sleep(1)
+	    except KeyboardInterrupt():
+	    	print("Exit")   
 
     rospy.Subscriber('chatter1',sensorValMsg, proximityCallback)
-    #rospy.Subscriber('chatter2',rfidMsg, rfidCallback)
+    rospy.Subscriber('graphChatter',graphMsg, graphCallback)
+    rospy.Subscriber('rfidChatter',rfidMsg, rfidCallback)
     #rospy.Subscriber('chatter3',ultrasonicMsg, ultrasonicCallback)
-
+    
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
 
@@ -147,7 +196,15 @@ def lineFollow(left,center,right):
 		print("Stop")
 		motorStop()
 
+'''def forkLeftTurn():
+	#code
 
+def forkRightTurn():
+	#code
+
+def forkStraight():
+	#code
+'''
 def motorForward():
 	#GPIO.output(enA,GPIO.HIGH)
 	pEnA.ChangeDutyCycle(20)

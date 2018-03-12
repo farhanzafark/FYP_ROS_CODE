@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/farhan/catkin_ws/src/metal_line_follower/msg/sensorValMsg.msg;/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg;/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg;/home/farhan/catkin_ws/src/metal_line_follower/msg/proximityMsg.msg;/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg;/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg"
+messages_str = "/home/farhan/catkin_ws/src/metal_line_follower/msg/sensorValMsg.msg;/home/farhan/catkin_ws/src/metal_line_follower/msg/myCustom.msg;/home/farhan/catkin_ws/src/metal_line_follower/msg/rfidMsg.msg;/home/farhan/catkin_ws/src/metal_line_follower/msg/proximityMsg.msg;/home/farhan/catkin_ws/src/metal_line_follower/msg/ultrasonicMsg.msg;/home/farhan/catkin_ws/src/metal_line_follower/msg/graphMsg.msg;/home/farhan/catkin_ws/src/metal_line_follower/msg/beginOpMsg.msg"
 services_str = ""
 pkg_name = "metal_line_follower"
 dependencies_str = "std_msgs"
