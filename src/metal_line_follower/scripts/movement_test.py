@@ -30,7 +30,7 @@ pEnB = GPIO.PWM(enB,50)
 
 stopFlag = False
 utFlag = False
-isMovingFlag = False
+enableFlag = True
 shortestPathList = []
 nextNode = ""
 
@@ -50,14 +50,19 @@ def setup():
 
 def proximityCallback(msg):
 	global stopFlag
-	global isMovingFlag
+	global enableFlag
 	
 	sender = msg.sender
 	#leftProximityVal = msg.msgData(1)
 	#rightProximityVal = msg.msgData(2)
-	if isMovingFlag == True:
+	if enableFlag == True:
 		if stopFlag == False:
-			if sender == "proximity":
+			if sender == "test_sender":
+
+				rospy.loginfo(rospy.get_caller_id() + 'sender: %s\nsensor values: %s', sender,msg.msgData)
+		#	if str(data.data)=="Hello":
+		#		rospy.loginfo("Custom Message: %s", data.data)
+			elif sender == "proximity":
 				#get data
 				msgData = (msg.leftSensorIn,msg.centerSensorIn,msg.rightSensorIn)
 				rospy.loginfo(rospy.get_caller_id() + 'sender: %s\nsensor values: %s', sender,msgData)
@@ -70,11 +75,11 @@ def proximityCallback(msg):
 def rfidCallback(msg):
 	global stopFlag
 	global utFlag
-	global isMovingFlag
+	global enableFlag
 	
 	stopFlag = True
 	sender = msg.sender
-	if isMovingFlag == True:
+	if enableFlag == True:
 		if utFlag == False:
 			 
 			if sender == "rfid":
@@ -111,10 +116,10 @@ def rfidCallback(msg):
 def ultrasonicCallback(msg):
 	global stopFlag
 	global utFlag
-	global isMovingFlag
+	global enableFlag
 	
 	sender = msg.sender
-	if isMovingFlag == True:
+	if enableFlag == True:
 		if sender == "ultrasonic":
 			msgData = msg.status
 			if msgData == "Clear":
@@ -130,21 +135,17 @@ def ultrasonicCallback(msg):
 		#turn
 		
 def graphCallback(msg):
-	global isMovingFlag
+	global enableFlag
 	global shortestPathList
 	
 	sender = msg.sender
 	if sender == "graph":
 		nodesListString = sender.shortestPath
-		nodesListString = nodesListString.strip(",")
+		nodesListString.strip(",")
 		shortestPathList = nodesListString.split(",")
 		nextNode = shortestPathList
-		directionsString = sender.directions
-		directionsString = directionsString.strip(",")
-		directionsList = directionsString.split(",")
-		
-		if msg.isMovingFlag == True:
-			isMovingFlag = True
+		if msg.enableFlag == True:
+			enableFlag = True
 
 
 def listener():
@@ -154,12 +155,12 @@ def listener():
     # anonymous=True flag means that rospy will choose a unique
     # name for our 'listener' node so that multiple listeners can
     # run simultaneously.
-    global isMovingFlag
+    global enableFlag
     rospy.init_node('central_processor', anonymous=True)
     
     rospy.Subscriber('chatter1',sensorValMsg, proximityCallback)
     rospy.Subscriber('graphChatter',graphMsg, graphCallback)
-    rospy.Subscriber('rfidChatter',rfidMsg, rfidCallback)
+    #rospy.Subscriber('rfidChatter',rfidMsg, rfidCallback)
     #rospy.Subscriber('chatter3',ultrasonicMsg, ultrasonicCallback)
     
     # spin() simply keeps python from exiting until this node is stopped
@@ -178,6 +179,9 @@ def lineFollow(left,center,right):
 		#turn right, left on, right off 
 		print("Right")
 		motorRight()
+	elif right == 0 and center == 0 and left == 0:
+		print("Stop")
+		motorStop()
 	elif right == 0 and center == 0 and left == 0:
 		print("Stop")
 		motorStop()

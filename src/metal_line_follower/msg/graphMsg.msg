@@ -3,3 +3,4 @@ string shortestPath
 bool enableFlag
 string xCoordinates
 string yCoordinates
+string directions
