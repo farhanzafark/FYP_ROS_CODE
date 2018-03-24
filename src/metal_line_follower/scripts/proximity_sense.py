@@ -8,9 +8,9 @@ import RPi.GPIO as GPIO
 import time
 
 
-ProximityPinLeft = 16
-ProximityPinRight = 18
-ProximityPinCenter = 15 
+ProximityPinLeft = 29
+ProximityPinRight = 33
+ProximityPinCenter = 31 
 
 sendFlag = 0
 

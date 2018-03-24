@@ -17,8 +17,8 @@ GPIO.setmode(GPIO.BOARD)
 ###	DEFINE GPIO PINS 	###
 in1=11
 in2=12
-in3=19
-in4=21
+in3=13
+in4=15
 enA=40
 enB=38
 
@@ -32,7 +32,10 @@ stopFlag = False
 utFlag = False
 isMovingFlag = False
 shortestPathList = []
+movementDirection = ""
 nextNode = ""
+
+atIntersectionFlag = False
 
 def setup():
 	
@@ -85,10 +88,13 @@ def rfidCallback(msg):
 				if msgData == nextNode:
 					if nodeIndex != (len(shortestPathList)-1): 
 						nextNode = shortestPathList[nodeIndex+1]
+						movementDirection = directionsList[nodeIndex+1]
 						stopFlag = False
 					else:
 						stopFlag = True
 						motorStop()
+						movementDirection = ""
+						nextNode = ""
 					
 				'''if msgData == "a":
 					print("Go to node b")
@@ -114,17 +120,16 @@ def ultrasonicCallback(msg):
 	global isMovingFlag
 	
 	sender = msg.sender
-	if isMovingFlag == True:
-		if sender == "ultrasonic":
-			msgData = msg.status
-			if msgData == "Clear":
-				StopFlag = False
-				utFlag = False
-			else:
-				utFlag = True
-				stopFlag = True
-				rospy.loginfo(rospy.get_caller_id() + 'sender: %s\nsensor values: %s', sender,msgData)
-			motorStop()
+	if sender == "ultrasonic":
+		msgData = msg.status
+		if msgData == "Clear":
+			StopFlag = False
+			utFlag = False
+		else:
+			utFlag = True
+			#stopFlag = True
+			rospy.loginfo(rospy.get_caller_id() + 'sender: %s\nsensor values: %s', sender,msgData)
+		motorStop()
 		
 		#get next direction from map
 		#turn
@@ -132,29 +137,28 @@ def ultrasonicCallback(msg):
 def graphCallback(msg):
 	global isMovingFlag
 	global shortestPathList
-	
+	isMovingFlag = False
 	sender = msg.sender
-	if sender == "graph":
-		nodesListString = sender.shortestPath
-		nodesListString = nodesListString.strip(",")
-		shortestPathList = nodesListString.split(",")
-		nextNode = shortestPathList
-		directionsString = sender.directions
-		directionsString = directionsString.strip(",")
-		directionsList = directionsString.split(",")
-		
-		if msg.isMovingFlag == True:
+	if utFlag = False:
+		if sender == "graph":
+			nodesListString = sender.shortestPath
+			nodesListString = nodesListString.strip(",")
+			shortestPathList = nodesListString.split(",")
+			nextNode = shortestPathList[0]
+			directionsString = sender.directions
+			directionsString = directionsString.strip(",")
+			directionsList = directionsString.split(",")
+			movementDirection = directionsList[0]
 			isMovingFlag = True
 
 
 def listener():
-
     # In ROS, nodes are uniquely named. If two nodes with the same
     # name are launched, the previous one is kicked off. The
     # anonymous=True flag means that rospy will choose a unique
     # name for our 'listener' node so that multiple listeners can
     # run simultaneously.
-    global isMovingFlag
+    
     rospy.init_node('central_processor', anonymous=True)
     
     rospy.Subscriber('chatter1',sensorValMsg, proximityCallback)
@@ -166,31 +170,67 @@ def listener():
     rospy.spin()
 
 def lineFollow(left,center,right):
+	global atIntersectionFlag
 	if center == 0 and left == 1 and right == 1:
-		#both motors on
-		print("Straight")
-		motorForward()
+		if atIntersectionFlag == True:
+			if movementDirection == "left":
+				print("Spin Left")
+				spinLeft()
+			elif movementDirection == "right":
+				print("Spin Right")
+				spinRight()
+			else:
+				atIntersectionFlag == False
+		else:
+			#both motors on
+			print("Straight")
+			motorForward()
 	elif left == 0 and center == 1 and right == 1:
-		#turn left, right motor on, left off
-		print("Left")
-		motorLeft()
-	elif right == 0 and center ==1 and left == 1:
-		#turn right, left on, right off 
-		print("Right")
-		motorRight()
-	elif right == 0 and center == 0 and left == 0:
+		if atIntersectionFlag == True:
+			if movementDirection == "left":
+				atIntersectionFlag = False
+			elif movementDirection == "right":
+				spinRight()
+		else:
+			#turn left, right motor on, left off
+			print("Left")
+			motorLeft()
+	elif right == 0 and center == 1 and left == 1:
+		if atIntersectionFlag == True:
+			if movementDirection == "right":
+				atIntersectionFlag = False
+			elif movementDirection == "left":
+				spinLeft()
+		else:
+			#turn right, left on, right off 
+			print("Right")
+			motorRight()
+	elif right == 1 and center == 1 and left == 1:
 		print("Stop")
 		motorStop()
+		## seek function
+	elif left == 0 and center == 0 and right == 0:
+		#turning
+		motorStop()
+		time.sleep(0.25)
+		atIntersectionFlag = True
+		motorForward()
+		time.sleep(0.3)
+	elif left == 1 and center == 0 and right == 0:
+		#turning
+		motorStop()
+		time.sleep(0.25)
+		atIntersectionFlag = True
+		motorForward()
+		time.sleep(0.3)
+	elif left == 0 and center == 0 and right == 1:
+		#turning
+		motorStop()
+		time.sleep(0.25)
+		atIntersectionFlag = True
+		motorForward()
+		time.sleep(0.3)
 
-'''def forkLeftTurn():
-	#code
-
-def forkRightTurn():
-	#code
-
-def forkStraight():
-	#code
-'''
 def motorForward():
 	#GPIO.output(enA,GPIO.HIGH)
 	pEnA.ChangeDutyCycle(20)
@@ -220,6 +260,7 @@ def motorRight():
 	pEnB.ChangeDutyCycle(50)
 	GPIO.output(in3,GPIO.HIGH)
 	GPIO.output(in4,GPIO.LOW)
+
 def motorStop():
 	#GPIO.output(enA,GPIO.HIGH)
 	pEnA.ChangeDutyCycle(0)
@@ -228,6 +269,30 @@ def motorStop():
 	#GPIO.output(enB,GPIO.HIGH)
 	pEnB.ChangeDutyCycle(0)
 	GPIO.output(in3,GPIO.LOW)
+	GPIO.output(in4,GPIO.LOW)
+
+def spinLeft():
+	global pEnA
+	global pEnB
+	#GPIO.output(enA,GPIO.HIGH)
+	pEnA.ChangeDutyCycle(20)
+	GPIO.output(in1,GPIO.HIGH)
+	GPIO.output(in2,GPIO.LOW)
+	#GPIO.output(enB,GPIO.HIGH)
+	pEnB.ChangeDutyCycle(20)
+	GPIO.output(in3,GPIO.LOW)
+	GPIO.output(in4,GPIO.HIGH)
+
+def spinRight():
+	global pEnA
+	global pEnB
+	#GPIO.output(enA,GPIO.HIGH)
+	pEnA.ChangeDutyCycle(20)
+	GPIO.output(in1,GPIO.LOW)
+	GPIO.output(in2,GPIO.HIGH)
+	#GPIO.output(enB,GPIO.HIGH)
+	pEnB.ChangeDutyCycle(20)
+	GPIO.output(in3,GPIO.HIGH)
 	GPIO.output(in4,GPIO.LOW)
 
 if __name__ == '__main__':
