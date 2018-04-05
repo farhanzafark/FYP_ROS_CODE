@@ -9,4 +9,6 @@
           XCOORDINATES
           YCOORDINATES-VAL
           YCOORDINATES
+          DIRECTIONS-VAL
+          DIRECTIONS
 ))

@@ -16,8 +16,8 @@ GPIO.setmode(GPIO.BOARD)
 ###	DEFINE GPIO PINS 	###
 in1=11
 in2=12
-in3=19
-in4=21
+in3=13
+in4=15
 enA=40
 enB=38
 
@@ -40,8 +40,7 @@ def setup():
 	GPIO.setup(enA,GPIO.OUT)	
 	GPIO.setup(enB,GPIO.OUT)
 	#set PWM on enA and enB
-	pEnA = GPIO.PWM(enA,50)
-	pEnB = GPIO.PWM(enB,50)
+	
 	pEnA.start(0)
 	pEnB.start(0)
 
@@ -125,8 +124,8 @@ def listener():
     rospy.init_node('central_processor', anonymous=True)
 
     rospy.Subscriber('chatter1',sensorValMsg, proximityCallback)
-    rospy.Subscriber('chatter2',rfidMsg, rfidCallback)
-    rospy.Subscriber('chatter3',ultrasonicMsg, ultrasonicCallback)
+    #rospy.Subscriber('chatter2',rfidMsg, rfidCallback)
+    #rospy.Subscriber('chatter3',ultrasonicMsg, ultrasonicCallback)
 
     # spin() simply keeps python from exiting until this node is stopped
     rospy.spin()
@@ -144,12 +143,14 @@ def lineFollow(left,center,right):
 		#turn right, left on, right off 
 		print("Right")
 		motorRight()
-	elif right == 0 and center == 0 and left == 0:
+	elif right == 1 and center == 1 and left == 1:
 		print("Stop")
 		motorStop()
 
 
 def motorForward():
+	global pEnA
+	global pEnB
 	#GPIO.output(enA,GPIO.HIGH)
 	pEnA.ChangeDutyCycle(50)
 	GPIO.output(in1,GPIO.HIGH)
@@ -160,6 +161,8 @@ def motorForward():
 	GPIO.output(in4,GPIO.LOW)
 
 def motorLeft():
+	global pEnA
+	global pEnB
 	#GPIO.output(enA,GPIO.HIGH)
 	pEnA.ChangeDutyCycle(50)
 	GPIO.output(in1,GPIO.HIGH)
@@ -170,6 +173,8 @@ def motorLeft():
 	GPIO.output(in4,GPIO.LOW)
 
 def motorRight():
+	global pEnA
+	global pEnB
 	#GPIO.output(enA,GPIO.HIGH)
 	pEnA.ChangeDutyCycle(50)
 	GPIO.output(in1,GPIO.LOW)
@@ -179,6 +184,8 @@ def motorRight():
 	GPIO.output(in3,GPIO.HIGH)
 	GPIO.output(in4,GPIO.LOW)
 def motorStop():
+	global pEnA
+	global pEnB
 	#GPIO.output(enA,GPIO.HIGH)
 	pEnA.ChangeDutyCycle(0)
 	GPIO.output(in1,GPIO.LOW)
@@ -188,9 +195,19 @@ def motorStop():
 	GPIO.output(in3,GPIO.LOW)
 	GPIO.output(in4,GPIO.LOW)
 
+def destroy():
+	GPIO.output(in1,GPIO.LOW)
+	GPIO.output(in2,GPIO.LOW)
+	GPIO.output(in3,GPIO.LOW)
+	GPIO.output(in4,GPIO.LOW)
+	GPIO.cleanup()
+
 if __name__ == '__main__':
 	setup()
-	listener()
+	try:
+		listener()
+	except KeyboardInterrupt:
+		destroy()
 
 
 

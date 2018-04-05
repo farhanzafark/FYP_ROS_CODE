@@ -23,6 +23,7 @@ class graphMsg {
       this.enableFlag = null;
       this.xCoordinates = null;
       this.yCoordinates = null;
+      this.directions = null;
     }
     else {
       if (initObj.hasOwnProperty('sender')) {
@@ -55,6 +56,12 @@ class graphMsg {
       else {
         this.yCoordinates = '';
       }
+      if (initObj.hasOwnProperty('directions')) {
+        this.directions = initObj.directions
+      }
+      else {
+        this.directions = '';
+      }
     }
   }
 
@@ -70,6 +77,8 @@ class graphMsg {
     bufferOffset = _serializer.string(obj.xCoordinates, buffer, bufferOffset);
     // Serialize message field [yCoordinates]
     bufferOffset = _serializer.string(obj.yCoordinates, buffer, bufferOffset);
+    // Serialize message field [directions]
+    bufferOffset = _serializer.string(obj.directions, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -87,6 +96,8 @@ class graphMsg {
     data.xCoordinates = _deserializer.string(buffer, bufferOffset);
     // Deserialize message field [yCoordinates]
     data.yCoordinates = _deserializer.string(buffer, bufferOffset);
+    // Deserialize message field [directions]
+    data.directions = _deserializer.string(buffer, bufferOffset);
     return data;
   }
 
@@ -96,7 +107,8 @@ class graphMsg {
     length += object.shortestPath.length;
     length += object.xCoordinates.length;
     length += object.yCoordinates.length;
-    return length + 17;
+    length += object.directions.length;
+    return length + 21;
   }
 
   static datatype() {
@@ -106,7 +118,7 @@ class graphMsg {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '4c019807c6f85ba6ce267a24b9dc89cd';
+    return '0feed93f467ba06282bf8c2a567be919';
   }
 
   static messageDefinition() {
@@ -117,6 +129,7 @@ class graphMsg {
     bool enableFlag
     string xCoordinates
     string yCoordinates
+    string directions
     
     `;
   }
@@ -160,6 +173,13 @@ class graphMsg {
     }
     else {
       resolved.yCoordinates = ''
+    }
+
+    if (msg.directions !== undefined) {
+      resolved.directions = msg.directions;
+    }
+    else {
+      resolved.directions = ''
     }
 
     return resolved;

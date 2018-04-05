@@ -28,14 +28,16 @@ struct graphMsg_
     , shortestPath()
     , enableFlag(false)
     , xCoordinates()
-    , yCoordinates()  {
+    , yCoordinates()
+    , directions()  {
     }
   graphMsg_(const ContainerAllocator& _alloc)
     : sender(_alloc)
     , shortestPath(_alloc)
     , enableFlag(false)
     , xCoordinates(_alloc)
-    , yCoordinates(_alloc)  {
+    , yCoordinates(_alloc)
+    , directions(_alloc)  {
   (void)_alloc;
     }
 
@@ -55,6 +57,9 @@ struct graphMsg_
 
    typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _yCoordinates_type;
   _yCoordinates_type yCoordinates;
+
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _directions_type;
+  _directions_type directions;
 
 
 
@@ -133,12 +138,12 @@ struct MD5Sum< ::metal_line_follower::graphMsg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "4c019807c6f85ba6ce267a24b9dc89cd";
+    return "0feed93f467ba06282bf8c2a567be919";
   }
 
   static const char* value(const ::metal_line_follower::graphMsg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x4c019807c6f85ba6ULL;
-  static const uint64_t static_value2 = 0xce267a24b9dc89cdULL;
+  static const uint64_t static_value1 = 0x0feed93f467ba062ULL;
+  static const uint64_t static_value2 = 0x82bf8c2a567be919ULL;
 };
 
 template<class ContainerAllocator>
@@ -162,6 +167,7 @@ string shortestPath\n\
 bool enableFlag\n\
 string xCoordinates\n\
 string yCoordinates\n\
+string directions\n\
 ";
   }
 
@@ -185,6 +191,7 @@ namespace serialization
       stream.next(m.enableFlag);
       stream.next(m.xCoordinates);
       stream.next(m.yCoordinates);
+      stream.next(m.directions);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -213,6 +220,8 @@ struct Printer< ::metal_line_follower::graphMsg_<ContainerAllocator> >
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.xCoordinates);
     s << indent << "yCoordinates: ";
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.yCoordinates);
+    s << indent << "directions: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.directions);
   }
 };
 

@@ -31,6 +31,11 @@
     :reader yCoordinates
     :initarg :yCoordinates
     :type cl:string
+    :initform "")
+   (directions
+    :reader directions
+    :initarg :directions
+    :type cl:string
     :initform ""))
 )
 
@@ -66,6 +71,11 @@
 (cl:defmethod yCoordinates-val ((m <graphMsg>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader metal_line_follower-msg:yCoordinates-val is deprecated.  Use metal_line_follower-msg:yCoordinates instead.")
   (yCoordinates m))
+
+(cl:ensure-generic-function 'directions-val :lambda-list '(m))
+(cl:defmethod directions-val ((m <graphMsg>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader metal_line_follower-msg:directions-val is deprecated.  Use metal_line_follower-msg:directions instead.")
+  (directions m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <graphMsg>) ostream)
   "Serializes a message object of type '<graphMsg>"
   (cl:let ((__ros_str_len (cl:length (cl:slot-value msg 'sender))))
@@ -93,6 +103,12 @@
     (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_str_len) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_str_len) ostream))
   (cl:map cl:nil #'(cl:lambda (c) (cl:write-byte (cl:char-code c) ostream)) (cl:slot-value msg 'yCoordinates))
+  (cl:let ((__ros_str_len (cl:length (cl:slot-value msg 'directions))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) __ros_str_len) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_str_len) ostream))
+  (cl:map cl:nil #'(cl:lambda (c) (cl:write-byte (cl:char-code c) ostream)) (cl:slot-value msg 'directions))
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <graphMsg>) istream)
   "Deserializes a message object of type '<graphMsg>"
@@ -129,6 +145,14 @@
       (cl:setf (cl:slot-value msg 'yCoordinates) (cl:make-string __ros_str_len))
       (cl:dotimes (__ros_str_idx __ros_str_len msg)
         (cl:setf (cl:char (cl:slot-value msg 'yCoordinates) __ros_str_idx) (cl:code-char (cl:read-byte istream)))))
+    (cl:let ((__ros_str_len 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) __ros_str_len) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'directions) (cl:make-string __ros_str_len))
+      (cl:dotimes (__ros_str_idx __ros_str_len msg)
+        (cl:setf (cl:char (cl:slot-value msg 'directions) __ros_str_idx) (cl:code-char (cl:read-byte istream)))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<graphMsg>)))
@@ -139,16 +163,16 @@
   "metal_line_follower/graphMsg")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<graphMsg>)))
   "Returns md5sum for a message object of type '<graphMsg>"
-  "4c019807c6f85ba6ce267a24b9dc89cd")
+  "0feed93f467ba06282bf8c2a567be919")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'graphMsg)))
   "Returns md5sum for a message object of type 'graphMsg"
-  "4c019807c6f85ba6ce267a24b9dc89cd")
+  "0feed93f467ba06282bf8c2a567be919")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<graphMsg>)))
   "Returns full string definition for message of type '<graphMsg>"
-  (cl:format cl:nil "string sender~%string shortestPath~%bool enableFlag~%string xCoordinates~%string yCoordinates~%~%~%"))
+  (cl:format cl:nil "string sender~%string shortestPath~%bool enableFlag~%string xCoordinates~%string yCoordinates~%string directions~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'graphMsg)))
   "Returns full string definition for message of type 'graphMsg"
-  (cl:format cl:nil "string sender~%string shortestPath~%bool enableFlag~%string xCoordinates~%string yCoordinates~%~%~%"))
+  (cl:format cl:nil "string sender~%string shortestPath~%bool enableFlag~%string xCoordinates~%string yCoordinates~%string directions~%~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <graphMsg>))
   (cl:+ 0
      4 (cl:length (cl:slot-value msg 'sender))
@@ -156,6 +180,7 @@
      1
      4 (cl:length (cl:slot-value msg 'xCoordinates))
      4 (cl:length (cl:slot-value msg 'yCoordinates))
+     4 (cl:length (cl:slot-value msg 'directions))
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <graphMsg>))
   "Converts a ROS message object to a list"
@@ -165,4 +190,5 @@
     (cl:cons ':enableFlag (enableFlag msg))
     (cl:cons ':xCoordinates (xCoordinates msg))
     (cl:cons ':yCoordinates (yCoordinates msg))
+    (cl:cons ':directions (directions msg))
 ))

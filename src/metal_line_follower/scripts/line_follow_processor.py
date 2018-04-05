@@ -30,9 +30,9 @@ pEnB = GPIO.PWM(enB,50)
 
 stopFlag = False
 utFlag = False
-isMovingFlag = False
+isMovingFlag = True  ##SET TO FALSE WHEN USING RFID AND GRAPH
 shortestPathList = []
-movementDirection = ""
+movementDirection = ""  ##SET TO "" IN FINAL
 nextNode = ""
 
 atIntersectionFlag = False
@@ -139,7 +139,7 @@ def graphCallback(msg):
 	global shortestPathList
 	isMovingFlag = False
 	sender = msg.sender
-	if utFlag = False:
+	if utFlag == False:
 		if sender == "graph":
 			nodesListString = sender.shortestPath
 			nodesListString = nodesListString.strip(",")
@@ -233,11 +233,11 @@ def lineFollow(left,center,right):
 
 def motorForward():
 	#GPIO.output(enA,GPIO.HIGH)
-	pEnA.ChangeDutyCycle(20)
+	pEnA.ChangeDutyCycle(50)
 	GPIO.output(in1,GPIO.HIGH)
 	GPIO.output(in2,GPIO.LOW)
 	#GPIO.output(enB,GPIO.HIGH)
-	pEnB.ChangeDutyCycle(20)
+	pEnB.ChangeDutyCycle(50)
 	GPIO.output(in3,GPIO.HIGH)
 	GPIO.output(in4,GPIO.LOW)
 
@@ -275,11 +275,11 @@ def spinLeft():
 	global pEnA
 	global pEnB
 	#GPIO.output(enA,GPIO.HIGH)
-	pEnA.ChangeDutyCycle(20)
+	pEnA.ChangeDutyCycle(50)
 	GPIO.output(in1,GPIO.HIGH)
 	GPIO.output(in2,GPIO.LOW)
 	#GPIO.output(enB,GPIO.HIGH)
-	pEnB.ChangeDutyCycle(20)
+	pEnB.ChangeDutyCycle(50)
 	GPIO.output(in3,GPIO.LOW)
 	GPIO.output(in4,GPIO.HIGH)
 
@@ -287,17 +287,27 @@ def spinRight():
 	global pEnA
 	global pEnB
 	#GPIO.output(enA,GPIO.HIGH)
-	pEnA.ChangeDutyCycle(20)
+	pEnA.ChangeDutyCycle(50)
 	GPIO.output(in1,GPIO.LOW)
 	GPIO.output(in2,GPIO.HIGH)
 	#GPIO.output(enB,GPIO.HIGH)
-	pEnB.ChangeDutyCycle(20)
+	pEnB.ChangeDutyCycle(50)
 	GPIO.output(in3,GPIO.HIGH)
 	GPIO.output(in4,GPIO.LOW)
 
+def destroy():
+	GPIO.output(in1,GPIO.LOW)
+	GPIO.output(in2,GPIO.LOW)
+	GPIO.output(in3,GPIO.LOW)
+	GPIO.output(in4,GPIO.LOW)
+	GPIO.cleanup()
+
 if __name__ == '__main__':
 	setup()
-	listener()
+	try:
+		listener()
+	except KeyboardInterrupt:
+		destroy()
 
 
 
