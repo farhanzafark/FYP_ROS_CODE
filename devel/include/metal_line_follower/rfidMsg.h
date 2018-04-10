@@ -25,11 +25,11 @@ struct rfidMsg_
 
   rfidMsg_()
     : sender()
-    , id()  {
+    , nodeId()  {
     }
   rfidMsg_(const ContainerAllocator& _alloc)
     : sender(_alloc)
-    , id(_alloc)  {
+    , nodeId(_alloc)  {
   (void)_alloc;
     }
 
@@ -38,8 +38,8 @@ struct rfidMsg_
    typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _sender_type;
   _sender_type sender;
 
-   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _id_type;
-  _id_type id;
+   typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other >  _nodeId_type;
+  _nodeId_type nodeId;
 
 
 
@@ -118,12 +118,12 @@ struct MD5Sum< ::metal_line_follower::rfidMsg_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "1cb0315028760cd89d0107e03ae1d336";
+    return "683ff0ffba5ff7be443d666ab4b04ae4";
   }
 
   static const char* value(const ::metal_line_follower::rfidMsg_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x1cb0315028760cd8ULL;
-  static const uint64_t static_value2 = 0x9d0107e03ae1d336ULL;
+  static const uint64_t static_value1 = 0x683ff0ffba5ff7beULL;
+  static const uint64_t static_value2 = 0x443d666ab4b04ae4ULL;
 };
 
 template<class ContainerAllocator>
@@ -143,7 +143,7 @@ struct Definition< ::metal_line_follower::rfidMsg_<ContainerAllocator> >
   static const char* value()
   {
     return "string sender\n\
-string id\n\
+string nodeId\n\
 ";
   }
 
@@ -163,7 +163,7 @@ namespace serialization
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
       stream.next(m.sender);
-      stream.next(m.id);
+      stream.next(m.nodeId);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -184,8 +184,8 @@ struct Printer< ::metal_line_follower::rfidMsg_<ContainerAllocator> >
   {
     s << indent << "sender: ";
     Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.sender);
-    s << indent << "id: ";
-    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.id);
+    s << indent << "nodeId: ";
+    Printer<std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other > >::stream(s, indent + "  ", v.nodeId);
   }
 };
 

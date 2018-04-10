@@ -1,2 +1,2 @@
 string sender
-string id
+string nodeId

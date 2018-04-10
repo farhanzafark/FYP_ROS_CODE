@@ -34,7 +34,7 @@ isMovingFlag = True  ##SET TO FALSE WHEN USING RFID AND GRAPH
 shortestPathList = []
 movementDirection = ""  ##SET TO "" IN FINAL
 nextNode = ""
-
+directionsList = []
 atIntersectionFlag = False
 
 def setup():
@@ -74,28 +74,32 @@ def rfidCallback(msg):
 	global stopFlag
 	global utFlag
 	global isMovingFlag
-	
+	global nextNode
+	global movementDirection
+	print(shortestPathList)
 	stopFlag = True
 	sender = msg.sender
 	if isMovingFlag == True:
 		if utFlag == False:
-			 
 			if sender == "rfid":
 				#get data
-				msgData = msg.id
+				msgData = msg.nodeId
+				msgData = msgData.strip()
 				rospy.loginfo(rospy.get_caller_id() + 'sender: %s\nsensor values: %s', sender,msgData)
 				nodeIndex = shortestPathList.index(nextNode)
 				if msgData == nextNode:
 					if nodeIndex != (len(shortestPathList)-1): 
 						nextNode = shortestPathList[nodeIndex+1]
 						movementDirection = directionsList[nodeIndex+1]
+						print("movt dir: ",movementDirection)
 						stopFlag = False
+						
 					else:
 						stopFlag = True
 						motorStop()
 						movementDirection = ""
 						nextNode = ""
-					
+				print(stopFlag)
 				'''if msgData == "a":
 					print("Go to node b")
 				elif msgData == "b":
@@ -135,21 +139,29 @@ def ultrasonicCallback(msg):
 		#turn
 		
 def graphCallback(msg):
+	print("graph callbak")
 	global isMovingFlag
 	global shortestPathList
+	global nextNode
+	global directionsList
+	global movementDirection
 	isMovingFlag = False
 	sender = msg.sender
 	if utFlag == False:
 		if sender == "graph":
-			nodesListString = sender.shortestPath
+			nodesListString = msg.shortestPath
 			nodesListString = nodesListString.strip(",")
 			shortestPathList = nodesListString.split(",")
 			nextNode = shortestPathList[0]
-			directionsString = sender.directions
+			directionsString = msg.directions
 			directionsString = directionsString.strip(",")
 			directionsList = directionsString.split(",")
 			movementDirection = directionsList[0]
+			print(movementDirection)
 			isMovingFlag = True
+			stopFlag = False
+			print(shortestPathList)
+			print(nextNode)
 
 
 def listener():
@@ -180,7 +192,7 @@ def lineFollow(left,center,right):
 				print("Spin Right")
 				spinRight()
 			else:
-				atIntersectionFlag == False
+				atIntersectionFlag = False
 		else:
 			#both motors on
 			print("Straight")
@@ -191,6 +203,8 @@ def lineFollow(left,center,right):
 				atIntersectionFlag = False
 			elif movementDirection == "right":
 				spinRight()
+			else:
+				atIntersectionFlag = False
 		else:
 			#turn left, right motor on, left off
 			print("Left")
@@ -201,22 +215,33 @@ def lineFollow(left,center,right):
 				atIntersectionFlag = False
 			elif movementDirection == "left":
 				spinLeft()
+			else:
+				atIntersectionFlag = False
 		else:
 			#turn right, left on, right off 
 			print("Right")
 			motorRight()
 	elif right == 1 and center == 1 and left == 1:
-		print("Stop")
-		motorStop()
+		if atIntersectionFlag == True:
+			if movementDirection == "right":
+				spinRight()
+			elif movementDirection == "left":
+				spinLeft()
+			else:
+				atIntersectionFlag = False
+		else:
+			print("Stop")
+			motorStop()
 		## seek function
 	elif left == 0 and center == 0 and right == 0:
 		#turning
-		motorStop()
-		time.sleep(0.25)
+		print("INTERSECTION")
+		#motorStop()
+		#time.sleep(0.25)
 		atIntersectionFlag = True
 		motorForward()
-		time.sleep(0.3)
-	elif left == 1 and center == 0 and right == 0:
+		#time.sleep(0.3)
+	'''elif left == 1 and center == 0 and right == 0:
 		#turning
 		motorStop()
 		time.sleep(0.25)
@@ -229,7 +254,7 @@ def lineFollow(left,center,right):
 		time.sleep(0.25)
 		atIntersectionFlag = True
 		motorForward()
-		time.sleep(0.3)
+		time.sleep(0.3)'''
 
 def motorForward():
 	#GPIO.output(enA,GPIO.HIGH)

@@ -19,7 +19,7 @@ class rfidMsg {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
       this.sender = null;
-      this.id = null;
+      this.nodeId = null;
     }
     else {
       if (initObj.hasOwnProperty('sender')) {
@@ -28,11 +28,11 @@ class rfidMsg {
       else {
         this.sender = '';
       }
-      if (initObj.hasOwnProperty('id')) {
-        this.id = initObj.id
+      if (initObj.hasOwnProperty('nodeId')) {
+        this.nodeId = initObj.nodeId
       }
       else {
-        this.id = '';
+        this.nodeId = '';
       }
     }
   }
@@ -41,8 +41,8 @@ class rfidMsg {
     // Serializes a message object of type rfidMsg
     // Serialize message field [sender]
     bufferOffset = _serializer.string(obj.sender, buffer, bufferOffset);
-    // Serialize message field [id]
-    bufferOffset = _serializer.string(obj.id, buffer, bufferOffset);
+    // Serialize message field [nodeId]
+    bufferOffset = _serializer.string(obj.nodeId, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -52,15 +52,15 @@ class rfidMsg {
     let data = new rfidMsg(null);
     // Deserialize message field [sender]
     data.sender = _deserializer.string(buffer, bufferOffset);
-    // Deserialize message field [id]
-    data.id = _deserializer.string(buffer, bufferOffset);
+    // Deserialize message field [nodeId]
+    data.nodeId = _deserializer.string(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
     let length = 0;
     length += object.sender.length;
-    length += object.id.length;
+    length += object.nodeId.length;
     return length + 8;
   }
 
@@ -71,14 +71,14 @@ class rfidMsg {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '1cb0315028760cd89d0107e03ae1d336';
+    return '683ff0ffba5ff7be443d666ab4b04ae4';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
     string sender
-    string id
+    string nodeId
     
     `;
   }
@@ -96,11 +96,11 @@ class rfidMsg {
       resolved.sender = ''
     }
 
-    if (msg.id !== undefined) {
-      resolved.id = msg.id;
+    if (msg.nodeId !== undefined) {
+      resolved.nodeId = msg.nodeId;
     }
     else {
-      resolved.id = ''
+      resolved.nodeId = ''
     }
 
     return resolved;

@@ -7,13 +7,13 @@ import struct
 
 
 class rfidMsg(genpy.Message):
-  _md5sum = "1cb0315028760cd89d0107e03ae1d336"
+  _md5sum = "683ff0ffba5ff7be443d666ab4b04ae4"
   _type = "metal_line_follower/rfidMsg"
   _has_header = False #flag to mark the presence of a Header object
   _full_text = """string sender
-string id
+string nodeId
 """
-  __slots__ = ['sender','id']
+  __slots__ = ['sender','nodeId']
   _slot_types = ['string','string']
 
   def __init__(self, *args, **kwds):
@@ -24,7 +24,7 @@ string id
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       sender,id
+       sender,nodeId
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -35,11 +35,11 @@ string id
       #message fields cannot be None, assign default values for those that are
       if self.sender is None:
         self.sender = ''
-      if self.id is None:
-        self.id = ''
+      if self.nodeId is None:
+        self.nodeId = ''
     else:
       self.sender = ''
-      self.id = ''
+      self.nodeId = ''
 
   def _get_types(self):
     """
@@ -59,7 +59,7 @@ string id
         _x = _x.encode('utf-8')
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
-      _x = self.id
+      _x = self.nodeId
       length = len(_x)
       if python3 or type(_x) == unicode:
         _x = _x.encode('utf-8')
@@ -90,9 +90,9 @@ string id
       start = end
       end += length
       if python3:
-        self.id = str[start:end].decode('utf-8')
+        self.nodeId = str[start:end].decode('utf-8')
       else:
-        self.id = str[start:end]
+        self.nodeId = str[start:end]
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
@@ -111,7 +111,7 @@ string id
         _x = _x.encode('utf-8')
         length = len(_x)
       buff.write(struct.pack('<I%ss'%length, length, _x))
-      _x = self.id
+      _x = self.nodeId
       length = len(_x)
       if python3 or type(_x) == unicode:
         _x = _x.encode('utf-8')
@@ -143,9 +143,9 @@ string id
       start = end
       end += length
       if python3:
-        self.id = str[start:end].decode('utf-8')
+        self.nodeId = str[start:end].decode('utf-8')
       else:
-        self.id = str[start:end]
+        self.nodeId = str[start:end]
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e) #most likely buffer underfill
